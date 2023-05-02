@@ -191,7 +191,7 @@ export default function Home() {
                 <AlertDescription>Successfully Minted !</AlertDescription>
               </Alert>}
               <FormControl mt={'10px'}>
-                <FormLabel>NFT Amount</FormLabel>
+                <FormLabel color={'white'}>NFT Amount</FormLabel>
                 <NumberInput>
                   <NumberInputField placeholder='Enter NFT amount' color={'white'} value={nftAmount} onChange={() => {if(event.target.value > 30){ setNftAmount(30); event.target.value = 30 }else{ setNftAmount(event.target.value); }}} min={0} max={30}/>
                   <NumberInputStepper>
