@@ -154,7 +154,7 @@ export default function Home() {
             display={'flex'}
             flexDir={'column'}
             justifyContent={'center'}>
-              <Text fontWeight={700} fontSize={'25px'}>NFT Presale</Text>
+              <Text fontWeight={700} fontSize={'25px'} color={'white'}>NFT Presale</Text>
               <Box display={'flex'} gap={'10px'} mt={'10px'}>
                 <Button colorScheme={nftType ? 'cyan' : 'gray'} onClick={() => {setNftType(true)} }>SuperHero</Button>
                 <Button colorScheme={nftType ? 'gray' : 'cyan'} onClick={() => setNftType(false)}>SuperVillans</Button>
@@ -162,9 +162,9 @@ export default function Home() {
               <Image src={nftType ? Good.src : Bad.src} height={'250px'} mt={'10px'} borderRadius={'10px'}/>
               {isAddressConnected && isLoadState ?
               <>
-              <Text mt={'20px'} mb={'5px'} fontWeight={'600'}>{nftType ? `Already Sold: ${loadData?.[1]?.toString()}/${loadData?.[2]?.toString()}` : `Already Sold: ${loadData?.[5]?.toString()}/${loadData?.[6]?.toString()}` }</Text>
+              <Text mt={'20px'} mb={'5px'} fontWeight={'600'} color={'white'}>{nftType ? `Already Sold: ${loadData?.[1]?.toString()}/${loadData?.[2]?.toString()}` : `Already Sold: ${loadData?.[5]?.toString()}/${loadData?.[6]?.toString()}` }</Text>
               <Progress value={nftType ? data?.[1]/data?.[2] * 100 : loadData?.[5]/loadData?.[6] * 100} borderRadius={'10px'}/>
-              <Text fontWeight={500} fontSize={'20px'} mt={'20px'} display={'flex'} gap={'5px'}><Text color={'blue.300'}>Price:</Text> {nftType ? `${loadData?.[0]?.toString() / 10 ** 18} BNB` : `${loadData?.[4]?.toString() / 10 ** 18} BNB`}</Text>
+              <Text fontWeight={500} fontSize={'20px'} mt={'20px'} display={'flex'} gap={'5px'} color={'white'}><Text color={'blue.300'}>Price:</Text> {nftType ? `${loadData?.[0]?.toString() / 10 ** 18} BNB` : `${loadData?.[4]?.toString() / 10 ** 18} BNB`}</Text>
               {error && <Alert status='error' m={'10px 0px'}>
                 <AlertIcon/>
                 <AlertTitle>Error !!</AlertTitle>
@@ -193,14 +193,14 @@ export default function Home() {
               <FormControl mt={'10px'}>
                 <FormLabel>NFT Amount</FormLabel>
                 <NumberInput>
-                  <NumberInputField placeholder='Enter NFT amount' value={nftAmount} onChange={() => {if(event.target.value > 30){ setNftAmount(30); event.target.value = 30 }else{ setNftAmount(event.target.value); }}} min={0} max={30}/>
+                  <NumberInputField placeholder='Enter NFT amount' color={'white'} value={nftAmount} onChange={() => {if(event.target.value > 30){ setNftAmount(30); event.target.value = 30 }else{ setNftAmount(event.target.value); }}} min={0} max={30}/>
                   <NumberInputStepper>
                     <NumberIncrementStepper />
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
               </FormControl>
-              <Text mt={'10px'} display={'flex'} gap={'5px'}><Text color={'blue.300'} fontWeight={500}>Total:</Text> {nftAmount * data[4] < 0 ? 0 :  nftAmount * (data[0] / ( 10 ** 18))} BNB</Text>
+              <Text mt={'10px'} display={'flex'} color={'white'} gap={'5px'}><Text color={'blue.300'} fontWeight={500}>Total:</Text> {nftAmount * data[4] < 0 ? 0 :  nftAmount * (data[0] / ( 10 ** 18))} BNB</Text>
               <Button width={'100%'} mt={'10px'} colorScheme='blue' isDisabled={isDisabled} onClick={() => {
                 if(nftType){
                 goodwrite()
@@ -208,7 +208,7 @@ export default function Home() {
                 badwrite()
                }
               }}>Buy</Button>
-              <Text mt={'10px'} display={'flex'} gap={'5px'}><Text color={'blue.300'} fontWeight={500}>You Own:</Text> {nftType ? `${data?.[3]?.toString()} SuperHeros` : `${data?.[7]?.toString()} Villans`}</Text>
+              <Text mt={'10px'} display={'flex'} color={'white'} gap={'5px'}><Text color={'blue.300'} fontWeight={500}>You Own:</Text> {nftType ? `${data?.[3]?.toString()} SuperHeros` : `${data?.[7]?.toString()} Villans`}</Text>
               <Button width={'100%'} mt={'10px'} colorScheme='pink' onClick={erroronopen}>Your NFTs</Button>
               </> : null}
               <Modal isOpen={errorisopen} onClose={erroronclose}>
