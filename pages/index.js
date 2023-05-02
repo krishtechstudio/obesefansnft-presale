@@ -123,6 +123,9 @@ export default function Home() {
       if(nftAmount <= 0){
         setError('Nft Amount must > 0')
         setIdDisabled(true);
+      }else if(!goodwrite || !badwrite){
+        setError('Insufficient Balance')
+        setIdDisabled(true);
       }else{
         setError(null)
         setIdDisabled(false);
@@ -156,7 +159,7 @@ export default function Home() {
                 <Button colorScheme={nftType ? 'cyan' : 'gray'} onClick={() => {setNftType(true)} }>SuperHero</Button>
                 <Button colorScheme={nftType ? 'gray' : 'cyan'} onClick={() => setNftType(false)}>SuperVillans</Button>
               </Box>
-              <Image src={nftType ? Good.src : Bad.src} height={'280px'} mt={'10px'} borderRadius={'10px'}/>
+              <Image src={nftType ? Good.src : Bad.src} height={'250px'} mt={'10px'} borderRadius={'10px'}/>
               {isAddressConnected && isLoadState ?
               <>
               <Text mt={'20px'} mb={'5px'} fontWeight={'600'}>{nftType ? `Already Sold: ${loadData?.[1]?.toString()}/${loadData?.[2]?.toString()}` : `Already Sold: ${loadData?.[5]?.toString()}/${loadData?.[6]?.toString()}` }</Text>
@@ -200,7 +203,7 @@ export default function Home() {
               <Text mt={'10px'} display={'flex'} gap={'5px'}><Text color={'blue.300'} fontWeight={500}>Total:</Text> {nftAmount * data[4] < 0 ? 0 :  nftAmount * (data[0] / ( 10 ** 18))} BNB</Text>
               <Button width={'100%'} mt={'10px'} colorScheme='blue' isDisabled={isDisabled} onClick={() => {
                 if(nftType){
-                  goodwrite()
+                goodwrite()
                }else{
                 badwrite()
                }
