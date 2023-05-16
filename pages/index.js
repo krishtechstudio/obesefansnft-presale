@@ -29,8 +29,8 @@ import { BigNumber } from 'ethers';
 
 export default function Home() {
   const { address, isConnected } = useAccount()
-  const [goodAddress, setGoodAddress] = useState({address: '0xab31e50f838c2c9A81f36CF3eC59de86E53C1a41', abi: abi});
-  const [badAddress, setBadAddress] = useState({address: '0xD6A94655EfE87d36f16897BeF2D02e2E759723e4', abi: abi});
+  const [goodAddress, setGoodAddress] = useState({address: '0x899E99b512E7631559FA50ae34De4D514b60a3FD', abi: abi});
+  const [badAddress, setBadAddress] = useState({address: '0xeEB083CeA9dAb4E28072fed2cEb688729EeB52a5', abi: abi});
   const [nftType, setNftType] = useState(true);
 
   const [isAddressConnected, setIsAddressConnected] = useState(false);
